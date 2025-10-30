@@ -1,10 +1,11 @@
-// src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { initializeFirestore } from "firebase/firestore";
 
 // Your Firebase project configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCZsNLC1XwktzE4dT-e-CaFL_ZP1YTNCCk",
+  // CORRECTED: Matched the project ID to your database
   authDomain: "e-summit-2026-app.firebaseapp.com",
   projectId: "e-summit-2026-app",
   storageBucket: "e-summit-2026-app.firebasestorage.app",
@@ -19,3 +20,8 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Auth
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
+
+// Initialize Firestore with long-polling enabled as a workaround for network issues.
+export const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+});
