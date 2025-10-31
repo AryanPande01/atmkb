@@ -67,7 +67,7 @@ function App() {
         // Fallback
         <div>
           <h2>Welcome, {userData.auth.displayName || userData.auth.email}</h2>
-          <p>Your role is not defined. Please contact support.</p>
+          
           <button
             onClick={handleLogout}
             style={{ padding: "10px 20px", marginTop: "20px" }}
